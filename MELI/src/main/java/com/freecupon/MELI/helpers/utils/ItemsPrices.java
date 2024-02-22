@@ -34,7 +34,7 @@ public class ItemsPrices {
         HttpResponse<String> response = HttpClient.newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
         ItemPrice itemPrice = objectMapper.readValue(response.body(), ItemPrice.class);
-        if(itemPrice != null){
+        if(itemPrice.getId() != null && itemPrice.getPrice() != null){
             return itemPrice.getPrice();
         }
         return 0.0;
