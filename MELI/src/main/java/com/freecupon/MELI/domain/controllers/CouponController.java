@@ -25,8 +25,8 @@ public class CouponController {
     @PostMapping()
     @Operation(summary = "Endpoint to find the max use of the coupon")
     public ResponseEntity<ItemsCouponInfo> maximizeCoupon (@RequestBody ItemsCouponInfo itemsCouponInfo){
-        couponImpl.maximizeCoupon(itemsCouponInfo);
-        return new ResponseEntity<>(HttpStatus.OK);
+        ItemsCouponInfo response = couponImpl.maximizeCoupon(itemsCouponInfo);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
 }
