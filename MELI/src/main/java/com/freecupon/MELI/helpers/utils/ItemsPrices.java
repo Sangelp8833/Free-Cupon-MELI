@@ -2,7 +2,6 @@ package com.freecupon.MELI.helpers.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.freecupon.MELI.domain.dto.ItemPrice;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -12,8 +11,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Map;
-import java.util.Objects;
 
 @Component
 public class ItemsPrices {
