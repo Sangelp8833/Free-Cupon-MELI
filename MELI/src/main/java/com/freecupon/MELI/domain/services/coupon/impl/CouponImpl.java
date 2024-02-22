@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -28,17 +32,11 @@ public class CouponImpl implements CouponService {
         int[] visited = new int[items_ids.size()];
         Integer qOfElements = items_ids.size();
         Double couponValue = cuponInfo.getAmount();
-
-        List<Integer> prices = new ArrayList<>(); //Consumir el API para los precios
-        prices.add(100);
-        prices.add(210);
-        prices.add(260);
-        prices.add(80);
-        prices.add(90);
+        List<Double> prices = new ArrayList<>();
 
         items_ids.forEach(e -> {
             try {
-                itemsPrices.getItemsPrice(e);
+                prices.add(itemsPrices.getItemsPrice(e));
             } catch (IOException | InterruptedException ex) {
                 throw new RuntimeException(ex);
             }

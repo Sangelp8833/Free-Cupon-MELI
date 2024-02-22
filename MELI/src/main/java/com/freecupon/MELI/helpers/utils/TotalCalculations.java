@@ -7,7 +7,7 @@ import java.util.List;
 @Component
 public class TotalCalculations {
 
-    public double total(Integer qOfElements, Double cuponValue, List<Integer> prices, int[] visited){
+    public double total(Integer qOfElements, Double cuponValue, List<Double> prices, int[] visited){
         if(qOfElements <= 0){
             return 0;
         }else if(prices.get(qOfElements - 1) > cuponValue){

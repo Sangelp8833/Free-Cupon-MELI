@@ -26,7 +26,7 @@ public class ItemsPrices {
     @Value("${base.uri}")
     private String baseUri;
 
-    public int getItemsPrice(String itemId) throws IOException, InterruptedException {
+    public Double getItemsPrice(String itemId) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseUri + itemId ))
                 .GET()
@@ -34,7 +34,10 @@ public class ItemsPrices {
         HttpResponse<String> response = HttpClient.newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
         ItemPrice itemPrice = objectMapper.readValue(response.body(), ItemPrice.class);
-        return 0;
+        if(itemPrice != null){
+            return itemPrice.getPrice();
+        }
+        return 0.0;
     }
 
 
