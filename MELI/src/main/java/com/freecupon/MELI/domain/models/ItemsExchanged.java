@@ -23,7 +23,7 @@ public class ItemsExchanged {
 
     @NotNull(message = "Se debe asignar un item_id")
     @Column(name = "item_id")
-    private String item_id;
+    private String itemId;
 
     @Column(name = "exchanged")
     private Long exchanged;

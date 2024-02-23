@@ -4,4 +4,7 @@ import com.freecupon.MELI.domain.models.ItemsExchanged;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemsExchangedRepository extends JpaRepository<ItemsExchanged,Long> {
+
+    ItemsExchanged findByItemId(String itemId);
+
 }

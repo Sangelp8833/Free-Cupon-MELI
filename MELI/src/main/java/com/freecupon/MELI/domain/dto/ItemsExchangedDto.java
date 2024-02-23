@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class ItemsExchangedDto {
 
-    private String item_id;
+    private String itemId;
     private Long exchanged;
 
 }
