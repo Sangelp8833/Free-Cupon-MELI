@@ -9,9 +9,9 @@ import javax.sql.DataSource;
 @Configuration
 public class JpaConfig {
 
-    private static String url = "jdbc:postgresql://localhost:5432/odontologia";
+    private static String url = "jdbc:postgresql://meli-db.c72g60oq8sff.us-east-2.rds.amazonaws.com:5432/meli";
     private static String username = "postgres"; // Poner su usuario
-    private static String password = "sasa"; // colocar su contraseña
+    private static String password = "cocoliso"; // colocar su contraseña
 
     @Bean
     public DataSource dataSource(){
