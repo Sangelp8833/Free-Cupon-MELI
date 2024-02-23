@@ -26,6 +26,6 @@ public class ItemsExchanged {
     private String item_id;
 
     @Column(name = "exchanged")
-    private Integer exchanged;
+    private Long exchanged;
 
 }
