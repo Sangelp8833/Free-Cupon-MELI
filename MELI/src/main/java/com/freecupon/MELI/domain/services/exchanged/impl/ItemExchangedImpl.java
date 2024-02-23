@@ -54,9 +54,9 @@ public class ItemExchangedImpl implements ItemsExchangedService {
     @Override
     public List<ItemsExchangedDto> findTopFive(List<String> itemsId) {
         List<ItemsExchangedDto> exchangedDtos = new ArrayList<>();
-        itemsExchangedRepository.findTopFive(itemsId).forEach(e -> {
+        /*itemsExchangedRepository.findTopFive(itemsId).forEach(e -> {
             exchangedDtos.add(modelMapper.map(e,ItemsExchangedDto.class));
-        });
+        });*/
         return exchangedDtos;
     }
 }

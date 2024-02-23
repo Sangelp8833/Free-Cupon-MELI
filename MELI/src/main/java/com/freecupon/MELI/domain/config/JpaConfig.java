@@ -10,14 +10,15 @@ import javax.sql.DataSource;
 @Configuration
 public class JpaConfig {
 
+
     @Value("${db.url}")
-    private static String url;
+    private String url;
     @Value("${db.username}")
-    private static String username;
+    private String username;
     @Value("${db.password}")
-    private static String password;
+    private String password;
     @Value("${db.driver.class}")
-    private static String driverClassName;
+    private String driverClassName;
 
     @Bean
     public DataSource dataSource(){
