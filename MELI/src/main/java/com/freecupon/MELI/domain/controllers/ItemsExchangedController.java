@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,16 @@ public class ItemsExchangedController {
     public ResponseEntity<Map<String,Object>> topItems (@RequestBody ItemsCouponInfo itemsCouponInfo){
         Map<String, Object> response = new HashMap<>();
         String message = "";
-        exchangedImpl.findTopFive(itemsCouponInfo.getItems_ids());
+        List<ItemsExchangedDto> itemsList = exchangedImpl.findTopFive(itemsCouponInfo.getItems_ids());
+
+        if(!itemsList.isEmpty()){
+            message = "top-5:";
+            response.put(message, itemsList);
+        }else{
+            message = "No hay elementos para obtener el top-5";
+            response.put(message, Collections.EMPTY_LIST);
+        }
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -52,6 +53,10 @@ public class ItemExchangedImpl implements ItemsExchangedService {
 
     @Override
     public List<ItemsExchangedDto> findTopFive(List<String> itemsId) {
-        return null;
+        List<ItemsExchangedDto> exchangedDtos = new ArrayList<>();
+        itemsExchangedRepository.findTopFive(itemsId).forEach(e -> {
+            exchangedDtos.add(modelMapper.map(e,ItemsExchangedDto.class));
+        });
+        return exchangedDtos;
     }
 }
