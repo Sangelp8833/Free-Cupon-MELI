@@ -12,4 +12,4 @@ Mercado Libre está implementando un nuevo beneficio para los usuarios que más 
 - Para el desarrollo del punto.2 se consideró la creación de una base de datos postgres, donde se pudiera guardar los elementos "canjeados".
 - Se asume que una vez se haya consumio el endpoint utilizado para máximar el uso del cupon, los elementos devueltos son los elementos que se van a canjear.
 
- - ### Draft de arquitectura
+### Draft de arquitectura
