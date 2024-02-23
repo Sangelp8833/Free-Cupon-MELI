@@ -4,7 +4,7 @@ Mercado Libre está implementando un nuevo beneficio para los usuarios que más 
 -----------------------
 # URLs
 
-### 1. MAximizar uso del cupon:
+### 1. Maximizar uso del cupon:
  - URL: ec2-13-58-232-228.us-east-2.compute.amazonaws.com:8080/free-cupon-MELI/cupon
 
 # Consideraciones y Arquitectura de la aplicación
