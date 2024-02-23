@@ -1,5 +1,6 @@
 package com.freecupon.MELI.domain.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,9 +10,14 @@ import javax.sql.DataSource;
 @Configuration
 public class JpaConfig {
 
-    private static String url = "jdbc:postgresql://meli-db.c72g60oq8sff.us-east-2.rds.amazonaws.com:5432/meli";
-    private static String username = "postgres"; // Poner su usuario
-    private static String password = "cocoliso"; // colocar su contraseña
+    @Value("${db.url}")
+    private static String url;
+    @Value("${db.username}")
+    private static String username;
+    @Value("${db.password}")
+    private static String password;
+    @Value("${db.driver.class}")
+    private static String driverClassName;
 
     @Bean
     public DataSource dataSource(){
@@ -20,7 +26,7 @@ public class JpaConfig {
                 .url(url)
                 .username(username)
                 .password(password)
-                .driverClassName("org.postgresql.Driver")
+                .driverClassName(driverClassName)
                 .build();
     }
 
