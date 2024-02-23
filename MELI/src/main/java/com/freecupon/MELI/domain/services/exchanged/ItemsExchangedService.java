@@ -7,7 +7,7 @@ import java.util.Map;
 public interface ItemsExchangedService {
 
     ItemsExchangedDto saveItem(ItemsExchangedDto itemsExchangedDto);
-    boolean updateItemExchanged(Map<String,Object> partialUpdate, String itemId);
+    boolean updateItemExchanged(ItemsExchangedDto partialUpdate, String itemId);
     ItemsExchangedDto findByItemId(String itemId);
 
 }

@@ -7,9 +7,6 @@ import com.freecupon.MELI.repository.ItemsExchangedRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-
-import java.util.Map;
 
 @Service
 public class ItemExchangedImpl implements ItemsExchangedService {
@@ -30,8 +27,16 @@ public class ItemExchangedImpl implements ItemsExchangedService {
     }
 
     @Override
-    public boolean updateItemExchanged(Map<String, Object> partialUpdate, String itemId) {
-        return false;
+    public boolean updateItemExchanged(ItemsExchangedDto partialUpdate, String itemId) {
+        ItemsExchanged itemExc = itemsExchangedRepository.findByItemId(itemId);
+        if(itemExc == null){
+            ItemsExchangedDto itemSaved = saveItem(partialUpdate);
+            return itemSaved != null;
+        }else {
+            itemExc.setExchanged(partialUpdate.getExchanged());
+            itemsExchangedRepository.save(itemExc);
+            return true;
+        }
     }
 
     @Override
