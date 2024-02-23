@@ -15,8 +15,7 @@ public interface ItemsExchangedRepository extends JpaRepository<ItemsExchanged,L
 
     @Query("SELECT i FROM ItemsExchanged i " +
             "WHERE i.itemId IN :listItems " +
-            "ORDER BY i.exchanged DESC " +
-            "FETCH FIRST 5 ROWS ONLY")
+            "ORDER BY i.exchanged DESC LIMIT 5")
     List<ItemsExchanged> findTopFive(@Param("listItems") List<String> itemsId);
 
 }
