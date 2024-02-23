@@ -31,10 +31,10 @@ public class ItemsExchangedController {
 
     @PostMapping()
     @Operation(summary = "Endpoint to list top 5 exchanged items")
-    public ResponseEntity<Map<String,Object>> topItems (@RequestBody ItemsCouponInfo itemsCouponInfo){
+    public ResponseEntity<Map<String,Object>> topItems (@RequestBody List<String> itemsId){
         Map<String, Object> response = new HashMap<>();
         String message = "";
-        List<ItemsExchangedDto> itemsList = exchangedImpl.findTopFive(itemsCouponInfo.getItems_ids());
+        List<ItemsExchangedDto> itemsList = exchangedImpl.findTopFive(itemsId);
 
         if(!itemsList.isEmpty()){
             message = "top-5:";
