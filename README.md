@@ -16,6 +16,8 @@ Mercado Libre está implementando un nuevo beneficio para los usuarios que más 
 
 ### Draft de arquitectura
 
+![Draft_Meli](https://github.com/Sangelp8833/Free-Cupon-MELI/assets/84479574/0e1b6a0f-c678-4b7f-8c5b-a67b1402d2e3)
+
 
 # Otra  información
 
