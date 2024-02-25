@@ -29,3 +29,9 @@ Este algorimo tiene muchas variaciones y soluciones, pero la elegida para dar so
 ![image](https://github.com/Sangelp8833/Free-Cupon-MELI/assets/84479574/f40366f9-7326-4d55-88cc-5163bc7067dd)
 
 y está sustentada como la posible mejor solución para este problema. [knapsack time complexity](https://medium.com/analytics-vidhya/knapsack-problem-7f05d0900db8).
+
+### Performance Test
+
+![image](https://github.com/Sangelp8833/Free-Cupon-MELI/assets/84479574/a47bcc5f-fd8c-4a80-bdf2-5656d120a1cd)
+
+
