@@ -2,6 +2,8 @@ package com.freecupon.MELI.domain.controllers;
 
 import com.freecupon.MELI.domain.dto.ItemsCouponInfo;
 import com.freecupon.MELI.domain.services.coupon.impl.CouponImpl;
+import com.freecupon.MELI.domain.services.exchanged.impl.ItemExchangedImpl;
+import com.freecupon.MELI.helpers.utils.ExchangeUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,14 @@ public class CouponController {
     @Autowired
     private CouponImpl couponImpl;
 
+    @Autowired
+    private ExchangeUtils exchangeUtils;
+
     @PostMapping()
     @Operation(summary = "Endpoint to find the max use of the coupon")
     public ResponseEntity<ItemsCouponInfo> maximizeCoupon (@RequestBody ItemsCouponInfo itemsCouponInfo){
         ItemsCouponInfo response = couponImpl.maximizeCoupon(itemsCouponInfo);
+        exchangeUtils.updateExchaged(itemsCouponInfo.getItems_ids());
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 

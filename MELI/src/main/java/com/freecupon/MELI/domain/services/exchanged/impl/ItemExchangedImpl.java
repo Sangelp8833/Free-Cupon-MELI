@@ -30,13 +30,16 @@ public class ItemExchangedImpl implements ItemsExchangedService {
     }
 
     @Override
-    public boolean updateItemExchanged(ItemsExchangedDto partialUpdate, String itemId) {
+    public boolean updateItemExchanged(String itemId) {
         ItemsExchanged itemExc = itemsExchangedRepository.findByItemId(itemId);
+        ItemsExchangedDto partialUpdate = new ItemsExchangedDto();
         if(itemExc == null){
+            partialUpdate.setItemId(itemId);
+            partialUpdate.setExchanged(1L);
             ItemsExchangedDto itemSaved = saveItem(partialUpdate);
             return itemSaved != null;
         }else {
-            itemExc.setExchanged(partialUpdate.getExchanged());
+            itemExc.setExchanged(itemExc.getExchanged() + 1);
             itemsExchangedRepository.save(itemExc);
             return true;
         }

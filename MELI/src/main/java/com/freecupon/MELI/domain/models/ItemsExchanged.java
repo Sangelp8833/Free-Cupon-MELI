@@ -17,9 +17,9 @@ import javax.validation.constraints.NotNull;
 public class ItemsExchanged {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long table_id;
 
     @NotNull(message = "Se debe asignar un item_id")
     @Column(name = "item_id")

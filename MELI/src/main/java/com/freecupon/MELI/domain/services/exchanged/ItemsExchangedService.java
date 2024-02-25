@@ -8,7 +8,7 @@ import java.util.List;
 public interface ItemsExchangedService {
 
     ItemsExchangedDto saveItem(ItemsExchangedDto itemsExchangedDto);
-    boolean updateItemExchanged(ItemsExchangedDto partialUpdate, String itemId);
+    boolean updateItemExchanged(String itemId);
     ItemsExchangedDto findByItemId(String itemId);
     List<ItemsExchangedDto> findTopFive(List<String> itemsId);
 }
