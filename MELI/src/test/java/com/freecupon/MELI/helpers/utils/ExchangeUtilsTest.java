@@ -1,8 +1,7 @@
-package com.freecupon.MELI.domain.controllers;
+package com.freecupon.MELI.helpers.utils;
 
 import com.freecupon.MELI.domain.dto.ItemsCouponInfo;
-import com.freecupon.MELI.domain.services.coupon.impl.CouponImpl;
-import com.freecupon.MELI.helpers.utils.ExchangeUtils;
+import com.freecupon.MELI.domain.services.exchanged.impl.ItemExchangedImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,15 +10,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+class ExchangeUtilsTest {
 
-class CouponControllerTest {
     private final ItemsCouponInfo itemsCouponInfo = new ItemsCouponInfo();
     private final ItemsCouponInfo itemsCouponInfoResponse = new ItemsCouponInfo();
 
@@ -39,29 +35,26 @@ class CouponControllerTest {
         itemsCouponInfoResponse.setItems_ids(idsResponse);
     }
 
+
+    @Mock
+    private ItemExchangedImpl exchangedImpl;
+
+    @InjectMocks
+    private ExchangeUtils exchangeUtils;
+
     @BeforeEach
     void setUp(){
         MockitoAnnotations.openMocks(this);
     }
 
-    @Mock
-    private CouponImpl couponImpl;
-
-    @Mock
-    private ExchangeUtils exchangeUtils;
-
-    @InjectMocks
-    private CouponController couponController;
-
     @Test
-    @DisplayName(value = "MaximizeCoupon")
+    @DisplayName(value = "updateExchaged")
     void maximizeCoupon(){
 
-        Mockito.when(couponImpl.maximizeCoupon(itemsCouponInfo)).thenReturn(itemsCouponInfoResponse);
-        Mockito.doNothing().when(exchangeUtils).updateExchaged(itemsCouponInfo.getItems_ids());
+        exchangeUtils.updateExchaged(itemsCouponInfo.getItems_ids());
 
-        ResponseEntity<ItemsCouponInfo> response =  couponController.maximizeCoupon(itemsCouponInfo);
-        Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
-        Assertions.assertEquals(89.9, Objects.requireNonNull(response.getBody()).getAmount());
+        Mockito.verify(exchangedImpl).updateItemExchanged(itemsCouponInfo.getItems_ids().get(2));
+
     }
+
 }
